@@ -5,9 +5,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">News</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-list *ngIf="news.length > 0">
+    <ion-item *ngFor="let article of news">
+      <ion-thumbnail slot="start">
+        <img [src]="article.image_url || 'assets/placeholder.png'" alt="News Image">
+      </ion-thumbnail>
+      <ion-label>
+        <h2>{{ article.title }}</h2>
+        <p>{{ article.description }}</p>
+      </ion-label>
+      <ion-button fill="clear" slot="end" [href]="article.link" target="_blank">Read</ion-button>
+    </ion-item>
+  </ion-list>
+
+  <ion-text *ngIf="news.length === 0">
+    <p>No news found.</p>
+  </ion-text>
 </ion-content>
