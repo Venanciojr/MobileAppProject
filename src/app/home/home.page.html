@@ -23,10 +23,12 @@
 
   <ion-item>
     <ion-label>Search Country</ion-label>
-    <ion-input placeholder="Type here a country"></ion-input>
+    <ion-input placeholder="Type here a country" [(ngModel)]="searchTerm"></ion-input>
   </ion-item>
-
-  <ion-button expand="full" color="primary" [routerLink]="'/countries'">
+  
+  <ion-button expand="full" color="primary" (click)="navigateToCountries()">
     Search
   </ion-button>
 </ion-content>
+
+
