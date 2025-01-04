@@ -15,6 +15,11 @@
         <p>Population: {{ country.population }}</p>
         <p>Region: {{ country.region }}</p>
       </ion-label>
+      <ion-buttons slot="end">
+        <ion-button [routerLink]="'/weather'" [queryParams]="{ lat: country.latlng[0], lon: country.latlng[1] }" color="secondary">
+          Weather
+        </ion-button>
+      </ion-buttons>
     </ion-item>
   </ion-list>
 
@@ -22,3 +27,4 @@
     <p>No countries found.</p>
   </ion-text>
 </ion-content>
+
