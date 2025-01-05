@@ -1,30 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Page title -->
     <ion-title>Weather</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Show weather data if available -->
   <div *ngIf="weather; else loading">
     <ion-card>
       <ion-card-header>
+        <!-- Show the name of the location -->
         <ion-card-title>{{ weather.name }}</ion-card-title>
+        <!-- Display temperature and weather condition -->
         <p>Temperature: {{ weather.main.temp }}°C</p>
         <p>Condition: {{ weather.weather[0].description }}</p>
       </ion-card-header>
       <ion-card-content>
+        <!-- Show weather icon -->
         <img [src]="'https://openweathermap.org/img/wn/' + weather.weather[0].icon + '@2x.png'" alt="Weather Icon">
+        <!-- Show extra weather details -->
         <p>Feels like: {{ weather.main.feels_like }}°C</p>
         <p>Humidity: {{ weather.main.humidity }}%</p>
       </ion-card-content>
     </ion-card>
+
+    <!-- Buttons for navigation -->
+    <div class="button-group">
+      <!-- Button to go back to the Home Page -->
+      <ion-button size="small" color="tertiary" [routerLink]="'/'">
+        <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+        Home
+      </ion-button>
+    </div>
   </div>
 
+  <!-- Message when loading weather data -->
   <ng-template #loading>
     <ion-text>
       <p>Loading weather data...</p>
     </ion-text>
   </ng-template>
 </ion-content>
-
-

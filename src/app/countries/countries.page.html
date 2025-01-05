@@ -23,10 +23,10 @@
       <!-- Buttons for "Weather" and "News" -->
       <div class="button-group" slot="end">
         <!-- Weather button redirects to the weather page -->
-        <ion-button size="small" color="secondary" [routerLink]="'/weather'"
-          [queryParams]="{ lat: country.latlng[0], lon: country.latlng[1] }">
+        <ion-button size="small" color="secondary" [routerLink]="'/weather'" [queryParams]="{ lat: country.latlng[0], lon: country.latlng[1], country: country.name.common }">
           Weather
         </ion-button>
+        
         <!-- News button redirects to the news page -->
         <ion-button size="small" color="primary" [routerLink]="'/news'"
           [queryParams]="{ country: country.name.common }">

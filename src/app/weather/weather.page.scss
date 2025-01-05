@@ -1,0 +1,16 @@
+.button-group {
+    display: flex;
+    justify-content: center;
+    /* Center the buttons */
+    gap: 10px;
+    /* Space between the buttons */
+    margin-top: 20px;
+    /* Space above the buttons */
+}
+
+ion-button {
+    --border-radius: 8px;
+    /* Rounded corners for the buttons */
+    padding: 5px 10px;
+    /* Adjust button size */
+}
