@@ -1,24 +1,44 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>News</ion-title>
+    <ion-title>News</ion-title> <!-- Page title -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Display news articles if available -->
   <ion-list *ngIf="news.length > 0">
     <ion-item *ngFor="let article of news">
+      <!-- News image or placeholder if no image is available -->
       <ion-thumbnail slot="start">
         <img [src]="article.image_url || 'assets/placeholder.png'" alt="News Image">
       </ion-thumbnail>
+      <!-- News title and description -->
       <ion-label>
         <h2>{{ article.title }}</h2>
         <p>{{ article.description }}</p>
       </ion-label>
+      <!-- Button to read the full news article -->
       <ion-button fill="clear" slot="end" [href]="article.link" target="_blank">Read</ion-button>
     </ion-item>
   </ion-list>
 
+  <!-- Message displayed if no news articles are found -->
   <ion-text *ngIf="news.length === 0">
     <p>No news found.</p>
   </ion-text>
+
+  <!-- Home button to return to the main page -->
+  <div class="button-group">
+    <ion-button size="small" color="tertiary" [routerLink]="'/'">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Home
+    </ion-button>
+  </div>
+
+  <!-- Loading message while fetching news data -->
+  <ng-template #loading>
+    <ion-text>
+      <p>Loading news data...</p>
+    </ion-text>
+  </ng-template>
 </ion-content>
