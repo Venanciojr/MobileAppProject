@@ -1,8 +1,11 @@
+<!-- Header of the application with a translucent effect -->
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Title of the app -->
     <ion-title>
       Country, News & Weather App
     </ion-title>
+    <!-- Button to navigate to the Settings page -->
     <ion-buttons slot="end">
       <ion-button [routerLink]="'/settings'">
         <ion-icon name="settings-outline"></ion-icon>
@@ -11,28 +14,51 @@
   </ion-toolbar>
 </ion-header>
 
+<!-- Main content of the page -->
 <ion-content [fullscreen]="true">
+
+  <!-- Welcome card displaying a hardcoded ID -->
   <ion-card>
     <ion-card-header>
-      <ion-card-title>Welcome</ion-card-title>
+      <ion-card-title>
+        <div class="welcome-container">
+          <!-- Add the image -->
+          <img src="./assets/logo.png" alt="App Logo" class="app-logo">
+          <!-- Add the welcome text -->
+          <span>Welcome</span>
+        </div>
+      </ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <strong>G00426060</strong>
     </ion-card-content>
   </ion-card>
 
+  <!-- Input field for searching a country -->
   <ion-item>
     <ion-label>Search Country</ion-label>
+    <!-- Two-way data binding with 'searchTerm' variable -->
     <ion-input placeholder="Type here a country" [(ngModel)]="searchTerm"></ion-input>
   </ion-item>
-  
+
+  <!-- Button to trigger the search action -->
   <ion-button expand="full" color="primary" (click)="navigateToCountries()">
     Search
   </ion-button>
-  <ion-button [routerLink]="'/settings'" color="tertiary">
+
+  <!-- Button to navigate to the Settings page -->
+  <ion-button expand="full" color="tertiary" [routerLink]="'/settings'">
+    Settings
     <ion-icon name="settings-outline"></ion-icon>
   </ion-button>
-  
+
 </ion-content>
 
-
+<!-- Footer with personalized text -->
+<ion-footer>
+  <ion-toolbar>
+    <ion-title>
+      #VenancioMoraes - ID: G00426060
+    </ion-title>
+  </ion-toolbar>
+</ion-footer>

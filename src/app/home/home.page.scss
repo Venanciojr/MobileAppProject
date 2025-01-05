@@ -1,3 +1,4 @@
+/* Center container content vertically and horizontally */
 #container {
   text-align: center;
 
@@ -8,11 +9,13 @@
   transform: translateY(-50%);
 }
 
+/* Style for strong text within the container */
 #container strong {
   font-size: 20px;
   line-height: 26px;
 }
 
+/* Style for paragraphs within the container */
 #container p {
   font-size: 16px;
   line-height: 22px;
@@ -22,6 +25,79 @@
   margin: 0;
 }
 
+/* Style for links within the container */
 #container a {
   text-decoration: none;
+}
+
+/* Footer styling */
+ion-footer {
+  background-color: #f4f4f4;
+  /* Footer background color */
+  text-align: center;
+  /* Center text in the footer */
+}
+
+ion-footer ion-title {
+  font-size: 12px;
+  /* Font size for footer text */
+  font-family: 'Arial', sans-serif;
+  /* Font family for footer text */
+  color: #131212;
+  /* Footer text color */
+}
+
+/* Add margin around ion-item components */
+ion-item {
+  margin-top: 10px;
+  /* Space above the item */
+  margin-bottom: 10px;
+  /* Space below the item */
+}
+
+/* Style for ion-label elements */
+ion-label {
+  margin-right: 15px;
+  /* Space to the right of the label */
+  margin-bottom: 5px;
+  /* Space between the label and the input */
+  font-weight: bold;
+  /* Bold font for the label */
+  font-size: 14px;
+  /* Font size for the label */
+  color: #333;
+  /* Label text color */
+}
+
+/* Style for ion-input elements */
+ion-input {
+  margin-top: 5px;
+  /* Space between the input and the label */
+  font-size: 14px;
+  /* Font size for the input text */
+  padding: 8px;
+  /* Padding inside the input field */
+  border: 1px solid #ccc;
+  /* Optional border for better visibility */
+  border-radius: 4px;
+  /* Rounded corners for the input field */
+}
+
+/* Container for aligning text and logo horizontally */
+.welcome-container {
+  display: flex;
+  /* Arrange text and image side by side */
+  align-items: center;
+  /* Vertically align items */
+  gap: 10px;
+  /* Space between text and image */
+}
+
+/* Style for the app logo */
+.app-logo {
+  width: 50px;
+  /* Logo width */
+  height: 50px;
+  /* Logo height */
+  border-radius: 10%;
 }
