@@ -1,30 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <!-- Page title displayed in the header -->
     <ion-title>Countries</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- Check if there are any countries to display -->
   <ion-list *ngIf="countries.length > 0">
+    <!-- Loop through the list of countries -->
     <ion-item *ngFor="let country of countries">
+      <!-- Display the country flag on the left -->
       <ion-thumbnail slot="start">
         <img [src]="country.flags?.png" alt="Flag">
       </ion-thumbnail>
+      <!-- Display country details -->
       <ion-label>
-        <h2>{{ country.name.official }}</h2>
-        <p>Population: {{ country.population }}</p>
-        <p>Region: {{ country.region }}</p>
+        <h2>{{ country.name.official }}</h2> <!-- Official name of the country -->
+        <p>Population: {{ country.population }}</p> <!-- Country population -->
+        <p>Region: {{ country.region }}</p> <!-- Region the country belongs to -->
       </ion-label>
-      <ion-buttons slot="end">
-        <ion-button [routerLink]="'/weather'" [queryParams]="{ lat: country.latlng[0], lon: country.latlng[1] }" color="secondary">
+      <!-- Buttons for "Weather" and "News" -->
+      <div class="button-group" slot="end">
+        <!-- Weather button redirects to the weather page -->
+        <ion-button size="small" color="secondary" [routerLink]="'/weather'"
+          [queryParams]="{ lat: country.latlng[0], lon: country.latlng[1] }">
           Weather
         </ion-button>
-      </ion-buttons>
+        <!-- News button redirects to the news page -->
+        <ion-button size="small" color="primary" [routerLink]="'/news'"
+          [queryParams]="{ country: country.name.common }">
+          News
+        </ion-button>
+        <!-- Button to return to the Home Page -->
+        <ion-button size="small" color="tertiary" [routerLink]="'/'">
+          <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+          Home
+        </ion-button>
+      </div>
     </ion-item>
   </ion-list>
 
+  <!-- Message shown if no countries are found -->
   <ion-text *ngIf="countries.length === 0">
     <p>No countries found.</p>
+    <!-- Back button -->
+    <ion-button size="small" color="tertiary" [routerLink]="'/'">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Home
+    </ion-button>
   </ion-text>
-</ion-content>
-
