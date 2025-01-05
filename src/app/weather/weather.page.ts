@@ -5,6 +5,7 @@ import { IonContent, IonHeader, IonTitle, IonToolbar, IonCard, IonCardHeader, Io
 import { ActivatedRoute } from '@angular/router';
 import { WeatherService } from '../services/weather.service';
 import { RouterModule } from '@angular/router';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-weather',
@@ -17,32 +18,41 @@ export class WeatherPage implements OnInit {
   weather: any; // Weather data from API
   lat: number = 0; // Latitude
   lon: number = 0; // Longitude
+  unitPreference: string = 'metric'; // Default to 'metric'
 
   constructor(
     private route: ActivatedRoute, // For accessing route parameters
-    private weatherService: WeatherService // Service to fetch weather data
+    private weatherService: WeatherService, // Service to fetch weather data
+    private storage: Storage // For saving and retrieving user preferences
   ) { }
 
-  ngOnInit() {
-    // Get latitude and longitude from route parameters
+  async ngOnInit() {
+    // Initialize storage and retrieve saved unit preference
+    await this.storage.create();
+    this.unitPreference = (await this.storage.get('unit')) || 'metric';
+
+    console.log('Unit preference:', this.unitPreference);
+
+    // Retrieve latitude and longitude from query parameters
     this.route.queryParams.subscribe(params => {
-      this.lat = +params['lat']; // Convert latitude to number
-      this.lon = +params['lon']; // Convert longitude to number
+      this.lat = +params['lat'];
+      this.lon = +params['lon'];
+
       if (this.lat && this.lon) {
-        this.fetchWeather(this.lat, this.lon); // Fetch weather data
+        this.fetchWeather(this.lat, this.lon);
       }
     });
   }
 
   // Fetch weather data using the WeatherService
   fetchWeather(lat: number, lon: number) {
-    this.weatherService.getWeatherByCoordinates(lat, lon).subscribe(
+    this.weatherService.getWeatherByCoordinates(lat, lon, this.unitPreference).subscribe(
       data => {
-        this.weather = data; // Update weather data
-        console.log('Weather Data:', data); // Log data for debugging
+        console.log('Weather data received:', data); // Debugging log
+        this.weather = data;
       },
       error => {
-        console.error('Error fetching weather data:', error); // Log error if request fails
+        console.error('Error fetching weather data:', error);
       }
     );
   }

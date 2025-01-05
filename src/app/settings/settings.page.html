@@ -1,24 +1,41 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Settings</ion-title>
+    <ion-title>Settings</ion-title> <!-- Page title -->
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
+  <!-- List for unit selection -->
   <ion-list>
-    <ion-radio-group [(ngModel)]="unit" (ionChange)="onUnitChange($event)">
+    <ion-radio-group [(ngModel)]="unitPreference"> <!-- Binds unit preference to model in TypeScript -->
       <ion-list-header>
-        <ion-label>Select Temperature Unit</ion-label>
+        <ion-label>Select Unit</ion-label> <!-- Header for the list -->
       </ion-list-header>
+
+      <!-- Metric option (Celsius) -->
       <ion-item>
         <ion-label>Metric (°C)</ion-label>
-        <ion-radio slot="start" value="Metric"></ion-radio>
+        <ion-radio slot="start" value="metric"></ion-radio>
       </ion-item>
+
+      <!-- Imperial option (Fahrenheit) -->
       <ion-item>
         <ion-label>Imperial (°F)</ion-label>
-        <ion-radio slot="start" value="Imperial"></ion-radio>
+        <ion-radio slot="start" value="imperial"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
-</ion-content>
 
+  <!-- Button to save the selected unit -->
+  <ion-button expand="block" color="primary" (click)="saveUnitPreference()">
+    Save
+  </ion-button>
+
+  <!-- Button to navigate back to the home page -->
+  <div class="button-group">
+    <ion-button size="small" color="tertiary" [routerLink]="'/'">
+      <ion-icon slot="start" name="arrow-back-outline"></ion-icon>
+      Home
+    </ion-button>
+  </div>
+</ion-content>

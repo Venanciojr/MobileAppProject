@@ -1,0 +1,26 @@
+.button-group {
+    display: flex;
+    /* Arrange items in a row */
+    justify-content: center;
+    /* Center the button horizontally */
+    margin-top: 20px;
+    /* Add space above the button */
+}
+
+ion-button {
+    --border-radius: 8px;
+    /* Rounded corners */
+    padding: 5px 10px;
+    /* Adjust button padding */
+}
+
+ion-button[color="tertiary"] {
+    text-align: center;
+    /* Center the text inside the button */
+    --background: #8e44ad;
+    /* Purple background color */
+    --color: white;
+    /* White text color */
+    --background-hover: #732d91;
+    /* Darker purple when hovered */
+}
