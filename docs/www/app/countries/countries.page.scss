@@ -1,0 +1,29 @@
+/* Group buttons together and align them side by side */
+.button-group {
+    display: flex;
+    /* Enables buttons to be displayed in a row */
+    gap: 10px;
+    /* Adds space between each button */
+}
+
+/* General styling for all ion-buttons */
+ion-button {
+    --border-radius: 8px;
+    /* Makes button corners rounded */
+    font-size: 12px;
+    /* Sets a smaller font size for a compact look */
+    padding: 5px 10px;
+    /* Adds inner spacing to the button */
+}
+
+/* Specific styling for the 'Home' button (color="tertiary") */
+ion-button[color="tertiary"] {
+    text-align: center;
+    /* Ensures text and icon are centered */
+    --background: #8e44ad;
+    /* Purple background color */
+    --color: white;
+    /* Sets text color to white */
+    --background-hover: #732d91;
+    /* Changes background to darker purple when hovered */
+}
