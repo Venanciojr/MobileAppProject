@@ -36,7 +36,8 @@
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
             "scripts": [],
-            "browser": "src/main.ts"
+            "browser": "src/main.ts",
+            "baseHref": "/MobileAppProject/"
           },
           "configurations": {
             "production": {
