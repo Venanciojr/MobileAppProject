@@ -1,5 +1,4 @@
-MobileAppProject
-Overview
+
 MobileAppProject is a mobile application built using Ionic and Angular. The application leverages Ionic Storage for data storage and features preloading for faster navigation. It is designed to provide a seamless user experience, enabling users to interact with the app in a mobile-first environment.
 
 Features
